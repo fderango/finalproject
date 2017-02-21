@@ -1,0 +1,43 @@
+header{
+	background-color: #ded887;
+	
+}
+header button{
+	margin-top: 50px;
+	
+
+}
+.header-image{
+	text-align: center;
+}
+.modal-body-ul{
+	list-style-type: none;
+}
+
+#map { height: 400px; }
+
+#career{
+	padding-left: 100px;
+}
+#media{
+	padding-left: 100px;
+}
+#address{
+	padding-left: 40px;
+}
+#email{
+	padding-left: 40px;
+}
+#city{
+	padding-left: 40px;
+}
+#phone{
+	padding-left: 40px;
+}
+.icon{
+	padding-top: 30px;
+}
+button.twitter{
+	background-color: transparent;
+	border: none;
+}

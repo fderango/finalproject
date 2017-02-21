@@ -1,0 +1,14 @@
+<div class="row" ng-controller="myStoreController as store">
+			<ul class="list-group">
+				<li class="list-group-item col-md-4" ng-repeat="product in store.products">
+					<div class="gallery">
+						<img ng-src="{{product.image}}" />
+					</div>
+					<h3>{{product.name}}</h3>
+					<h4>{{product.size}}</h4>
+					<h5>{{product.price}}</h5>
+					<p>{{product.description}}</p>
+				    <button ng-click="addCart(product)">Add to Cart</button>	
+				</li>
+			</ul>
+		</div>

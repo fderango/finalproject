@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="coffeeStore">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>The Brew Master</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="coffee.css">
+	<!--<base href="/">-->
+</head>
+<body>
+	<header class="header container-fluid">
+		<div class="row">
+      <section > 
+        <div class="col-md-3">
+          <a ng-href="/" class="btn btn-primary">Home</a>
+          <!-- Button trigger modal -->
+          <a ng-href="#!/about" class="btn">About Us</a>
+          <a ng-href="#!/menu" class="btn">Menu</a>
+        </div>
+        <div class="col-md-6 header-image">
+          <img src="images/headerimage.png">
+        </div>
+        <div class="col-md-3">
+          <!-- Button trigger modal -->
+          <a ng-href="#!/contact" class="btn">Contact</a>
+          <a ng-href="#!/locations" class="btn">Locations</a>
+          <a ng-href="#!/shop" class="btn">Shop</a>
+      </div>
+    </section>
+  </div>
+	</header>
+
+<div class="container">
+	<div ng-view></div>
+</div>
+
+
+
+<footer>
+	<div class="container-fluid">
+		<div class="row">  
+			<div class="col-md-4">
+				<h2 id="career">Careers</h2>
+				<h2 id="media">Media</h2>      		
+			</div>
+			<div class="col-md-4">      
+				<h2 id="address">1435 West Ontario</h2>
+				<h3 id="email">coffeeus@gmail.com</h3>
+				<h3 id="city">Chicago,IL 60606</h3>
+				<h3 id="phone">312-555-4545</h3>
+			</div>
+			<div class="icon" class="col-md-4">
+				<a class="btn" href="http://twitter.com"><img src="images/twitter.png"></a>
+				<a class="btn" href="http://facebook.com"><img src="images/facebook.png"></a>
+				<a class="btn" href="http://youtube.com"><img src="images/youtube.png"></a>
+			</div>
+		</div>
+	</div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfSBHoQp8zGKJJIpdJOZ4WSe1DnGXLxVo" async defer></script>
+
+</body>
+</html>
