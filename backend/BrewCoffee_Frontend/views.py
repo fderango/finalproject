@@ -1,16 +1,23 @@
 from django.shortcuts import render, redirect
+
+from BrewCoffee_Frontend.models import IndexModel
 from reviews.models import Products
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.urlsolvers import reverse
+#from django.core.urlsolvers import reverse
 from django.utils import timezone
-import paypalrestsdk
+#import paypalrestsdk
 
 from django.conf import settings
 from django.contrib.auth.models import User
 
+from django.views import generic
+from django.utils import timezone
+
+class IndexView(generic.ListView):
+    model = IndexModel
 
 
-def checkout(request, processor):
+'''def checkout(request, processor):
     if request.user.is_authenticated():
         cart = Cart.objects.filter(user=request.user.id, active=True)
         orders = ProductOrder.objects.filter(cart=cart)
@@ -106,10 +113,10 @@ def complete_order(request, processor):
             return render(request, 'order_complete.html', context)
     else:
         return redirect('index')def index(request):
-    return render(request, 'index.html')
+    return render(request, 'indexmodel_list.html')
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'indexmodel_list.html')
 
 def add_to_cart(request, Products_id):
     if request.user.is_authicated():
@@ -159,8 +166,8 @@ def cart(request):
             'total':total,
             'count':count,
         }
-        return render(request, 'cart.html',context)
+        return render(request, 'cart.html', context)
     else:
         return redirect('index')
-
+'''
 

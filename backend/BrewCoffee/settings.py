@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'reviews',
     'CustomerReview_Rest',
+    'BrewCoffee_Frontend',
 
 ]
 
@@ -58,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'BrewCoffee.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = 'BrewCoffee.wsgi.application'
 
 
 # Database

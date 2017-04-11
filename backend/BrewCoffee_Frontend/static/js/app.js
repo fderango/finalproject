@@ -20,23 +20,23 @@ myStore.config(['$routeProvider', '$locationProvider', function ($routeProvider,
 
  $routeProvider
     .when("/", {
-        templateUrl : "main.html"
+        templateUrl : "static/templates/main.html"
     })
     .when("/about", {
-        templateUrl : "about.html"
+        templateUrl : "static/templates/about.html"
     })
     .when("/contact", {
-        templateUrl : "contact.html",
+        templateUrl : "static/templates/contact.html",
         controller : "contactController"
     })
     .when("/locations", {
-        templateUrl : "locations.html"
+        templateUrl : "static/templates/locations.html"
     })
     .when("/menu", {
-        templateUrl : "menu.html"
+        templateUrl : "static/templates/menu.html"
     })
     .when("/shop", {
-        templateUrl : "shop.html"
+        templateUrl : "static/templates/shop.html"
     });
 }]); 
 
@@ -46,7 +46,7 @@ var coffee = [
 			size: 'small',
 			price: '2.89',
 			description: 'This is a nice Classic Tea Latte',
-			image: 'images/chailatte.jpg',
+			image: '/static/images/chailatte.jpg',
 			
 		},
 		{
@@ -54,14 +54,14 @@ var coffee = [
 			size: 'medium',
 			price: '3.19',
 			description: 'Imported from the highest quality of beans',
-			image: 'images/expresso.jpg'
+			image: '/static/images/expresso.jpg'
 		},
 		{
 			name: 'Iced Mocca',
 			size: ' large',
 			price: '3.39',
 			description: "These mocca's are out of this world",
-			image: 'images/mocca.jpg'
+			image: '/static/images/mocca.jpg'
 		}
 	];
 
