@@ -14,3 +14,4 @@ pip-selfcheck.json
 venv/Include/
 venv/Bin/
 *.sqlite3
+.idea
