@@ -4,14 +4,14 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import ReviewsSerializer
 from .serializers import ProductsSerializer
-from reviews.models import Customer_Reviews
-from reviews.models import Products
+from  BrewCoffee_Core.models import Review
+from  BrewCoffee_Core.models import Product
 
 
 class CustomerReviewViewSet(viewsets.ModelViewSet):
-    queryset = Customer_Reviews.objects.all()
+    queryset = Review.objects.all()
     serializer_class = ReviewsSerializer
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset =  Products.objects.all()
+    queryset =  Product.objects.all()
     serializer_class = ProductsSerializer

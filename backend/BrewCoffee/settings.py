@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'rest_framework',
-    'reviews',
-    'CustomerReview_Rest',
+    'BrewCoffee_Core',
+    'BrewCoffee_Api',
     'BrewCoffee_Frontend',
 
 ]

@@ -1,7 +1,4 @@
 from django.shortcuts import render, redirect
-
-from BrewCoffee_Frontend.models import IndexModel
-from reviews.models import Products
 from django.core.exceptions import ObjectDoesNotExist
 #from django.core.urlsolvers import reverse
 from django.utils import timezone
@@ -13,8 +10,12 @@ from django.contrib.auth.models import User
 from django.views import generic
 from django.utils import timezone
 
+from BrewCoffee_Core.models import IndexModel
+
+
 class IndexView(generic.ListView):
     model = IndexModel
+    template_name = 'BrewCoffee_Frontend/index.html'
 
 
 '''def checkout(request, processor):
@@ -113,10 +114,10 @@ def complete_order(request, processor):
             return render(request, 'order_complete.html', context)
     else:
         return redirect('index')def index(request):
-    return render(request, 'indexmodel_list.html')
+    return render(request, 'index.html')
 
 def index(request):
-    return render(request, 'indexmodel_list.html')
+    return render(request, 'index.html')
 
 def add_to_cart(request, Products_id):
     if request.user.is_authicated():
