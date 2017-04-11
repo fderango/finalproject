@@ -36,7 +36,12 @@ myStore.controller('myStoreController', ['$scope', '$http', function ($scope, $h
     $http.get('/api/products').then(function(result){
         $scope.products = result.data;
     })
-    myStore.addCart = function (product) {
-        $http.post('/cart/add', product)  
+
+    $scope.add = function(productId){
+        $http.get('add/' + productId).then(function(result){
+          if(result.status == 200){
+              window.location = "/cart"
+          }
+        })
     }
 }]);

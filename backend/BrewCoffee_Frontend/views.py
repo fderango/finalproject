@@ -9,14 +9,55 @@ from django.contrib.auth.models import User
 
 from django.views import generic
 from django.utils import timezone
+from django.http import HttpResponse
 
-from BrewCoffee_Core.models import IndexModel
+from BrewCoffee_Core.models import IndexModel, Product, Cart, CartProduct
 
 
 class IndexView(generic.ListView):
     model = IndexModel
     template_name = 'BrewCoffee_Frontend/index.html'
 
+def add_to_cart(request, Products_id):
+    if request.user.is_authenticated():
+        try:
+            product = Product.objects.get(pk=Products_id)
+
+        except ObjectDoesNotExist:
+            pass
+        else:
+            try:
+                cart = Cart.objects.get(user=request.user, active=True)
+            except ObjectDoesNotExist:
+                cart = Cart.objects.create(
+                    user = request.user
+                )
+                cart.save()
+
+            cart.add_to_cart(Products_id)
+
+        return HttpResponse('200')
+    else:
+        return HttpResponse('403')
+
+
+def cart(request):
+    if request.user.is_authenticated():
+        cart = Cart.objects.filter(user=request.user.id, active=True)
+        orders = CartProduct.objects.filter(cart=cart)
+        total = 0
+        count = 0
+        for order in orders:
+            total += (order.product.price * order.quantity)
+            count += order.quantity
+        context = {
+            'cart': orders,
+            'total':total,
+            'count':count,
+        }
+        return render(request, 'BrewCoffee_Frontend\cart.html', context)
+    else:
+        return redirect('index')
 
 '''def checkout(request, processor):
     if request.user.is_authenticated():
@@ -119,26 +160,7 @@ def complete_order(request, processor):
 def index(request):
     return render(request, 'index.html')
 
-def add_to_cart(request, Products_id):
-    if request.user.is_authicated():
-        try:
-            gem = Products.objects.get(pk=Products_id)
 
-        except ObjectDoesnotExist:
-            pass
-        else:
-            try:
-                cart = Cart.objects.get(user=request.user, active=True)
-            except ObjectDoesNotExist:
-                cart = Cart.objects.create(
-                    user = request.user
-                )
-                cart.saver()
-
-            cart.add_to_cart(Products_id)
-        return redirect('cart')
-    else:
-        return redirect('index')
 
 def remove_from_cart(request,Products_id):
     if request.user.is_authicated():
@@ -153,22 +175,5 @@ def remove_from_cart(request,Products_id):
     else:
         return redirect('index')
 
-def cart(request):
-    if request.user.is_authenticated():
-        cart = Cart.objects.filter(user=request.user.id, active=True)
-        orders = ProductOrder.objects.filter(cart=cart)
-        total = 0
-        count = 0
-        for order in orders:
-            total += (order.product.price * order.quantity)
-            count += order.quantity
-        context = {
-            'cart': orders,
-            'total':total,
-            'count':count,
-        }
-        return render(request, 'cart.html', context)
-    else:
-        return redirect('index')
 '''
 

@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cart</title>
-</head>
-<body>
+{% extends 'Brewcoffee_Frontend/base.html' %}
+
+{% block content %}
     <div>
         {% for item in cart %}
         <span>{{ item.product.name }}</span>
         <span>{{ item.quantity }}</span>
         Quantity: <a href="{% url 'add_to_cart' item.product.id %}">[+]</a>
-        Remove: <a href="{% url 'remove_from_cart' item.product.id %}">[-]</a>
+        Remove: <a href="remove">[-]</a>
     </div>
     {% empty %}
         <div>
@@ -24,10 +20,8 @@
 <div>
     {% if cart %}
     <div>
-        <a href="{% url 'checkout' 'paypal'  %}"><img src="https://www.paypay.com/en_US/1/btn/btn_expressCheckout.gif"></a>
+        <a href="/checkout" class="btn btn-primary">Checkout</a>
     </div>
     {% endif %}
 </div>
-
-</body>
-</html>
+{% endblock %}

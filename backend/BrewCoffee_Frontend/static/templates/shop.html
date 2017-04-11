@@ -1,6 +1,6 @@
 <div class="row" ng-controller="myStoreController as store">
 			<ul class="list-group">
-				<li class="list-group-item col-md-4" ng-repeat="product in store.products">
+				<li class="list-group-item col-md-4" ng-repeat="product in products">
 					<div class="gallery">
 						<img ng-src="{{product.image}}" />
 					</div>
@@ -8,7 +8,7 @@
 					<h4>{{product.size}}</h4>
 					<h5>{{product.price}}</h5>
 					<p>{{product.description}}</p>
-				    <button ng-click="addCart(product)">Add to Cart</button>	
+                    <button ng-click="add(product.id)" class="btn btn-primary">Add to Cart</button>
 				</li>
 			</ul>
 		</div>
