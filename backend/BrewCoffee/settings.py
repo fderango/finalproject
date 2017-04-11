@@ -59,6 +59,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SITE_ID=1
+
 ROOT_URLCONF = 'BrewCoffee.urls'
 
 TEMPLATES = [

@@ -1,0 +1,55 @@
+[{
+        "model": "BrewCoffee_Core.productsize"
+        , "pk": 1
+        , "fields": {
+            "name": "Small"
+        }
+}
+    , {
+        "model": "BrewCoffee_Core.productsize"
+        , "pk": 2
+        , "fields": {
+            "name": "Medium"
+        }
+}
+    , {
+        "model": "BrewCoffee_Core.productsize"
+        , "pk": 3
+        , "fields": {
+            "name": "Large"
+        }
+}
+    , {
+        "model": "BrewCoffee_Core.product"
+        , "pk": 1
+        , "fields": {
+            "name": "Chai Tea Latte"
+            , "price": "2.89"
+            , "description": "This is a nice Classic Tea Latte"
+            , "size": 1
+            , "image": "/static/images/chailatte.jpg"
+        }
+}
+    , {
+        "model": "BrewCoffee_Core.product"
+        , "pk": 2
+        , "fields": {
+            "name": "Expresso"
+            , "price": "3.19"
+            , "description": "Imported from the highest quality of beans"
+            , "size": 2
+            , "image": "/static/images/expresso.jpg"
+        }
+}
+    , {
+        "model": "BrewCoffee_Core.product"
+        , "pk": 3
+        , "fields": {
+            "name": "Iced Mocha"
+            , "price": "3.39"
+            , "description": "These mocca's are out of this world"
+            , "size": 3
+            , "image": "/static/images/mocca.jpg"
+        }
+}
+]

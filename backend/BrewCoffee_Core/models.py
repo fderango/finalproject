@@ -8,13 +8,18 @@ from django.utils import timezone
 class Review(models.Model):
     email = models.EmailField(max_length=254) #Stores the email
     stars = models.IntegerField()# Stores the star rating
-    comments = models.TextField() #Stores the user comments
-
+    comments = models.TextField(null=1) #Stores the user comments
+    
+class ProductSize(models.Model):
+    name = models.CharField(max_length=256)
 
 class Product(models.Model):
-    name = models.TextField() #Stores the email
-    price = models.DecimalField(decimal_places=2, max_digits=10) # Stores the star rating
-    description = models.TextField() #Stores the user comments
+    name = models.CharField(max_length=512) #Stores the product_name
+    price = models.DecimalField(decimal_places=2, max_digits=10, null=1) # Stores the star rating
+    description = models.TextField(null=1) #Stores the description
+    size = models.ForeignKey(ProductSize, on_delete=models.CASCADE, null=1)
+    image = models.TextField(max_length=1024, null=1)
 
 class IndexModel(models.Model):
     Title = models.CharField(max_length=1000)
+    description = models.TextField()
