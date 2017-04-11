@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html ng-app="coffeeStore">
 <head>
+	<title>The Brew Master</title>
+	{% load static %}
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>The Brew Master</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="coffee.css">
-	<!--<base href="/">-->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js" type="text/javascript"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src= "{% static 'js/app.js' %} "></script>
+	<script type="text/javascript" src="{% static 'modules/reviews.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoX4DVAiwm5pAiFZTHmRP1z5oHAIyI9yU" async defer></script>
+
 </head>
 <body>
+{% if request.user.is_authenticated %}
+	<h3>
+		Welcome, {% if request.user.first_name %}
+		{{ request.user.first_name }}
+		{% else %}
+		{{ request.user.username }}
+		{% endif %} <a href="{% url 'auth_logout' %}"></a>
+	</h3>
+    {% else %}
+	<h4>hello coffee lover. Would you like to <a href="{% url 'auth_login' %}">Log in</a></h4>
+{% endif %}
+{% verbatim %}
 	<header class="header container-fluid">
 		<div class="row">
       <section > 
         <div class="col-md-3">
           <a ng-href="/" class="btn btn-primary">Home</a>
           <!-- Button trigger modal -->
-          <a ng-href="#!/about" class="btn">About Us</a>
-          <a ng-href="#!/menu" class="btn">Menu</a>
+          <a ng-href="#!/about" class="btn btn-primary">About Us</a>
+          <a ng-href="#!/menu" class="btn btn-primary">Menu</a>
         </div>
         <div class="col-md-6 header-image">
           <img src="images/headerimage.png">
         </div>
         <div class="col-md-3">
           <!-- Button trigger modal -->
-          <a ng-href="#!/contact" class="btn">Contact</a>
-          <a ng-href="#!/locations" class="btn">Locations</a>
-          <a ng-href="#!/shop" class="btn">Shop</a>
+          <a ng-href="#!/contact" class="btn btn-primary">Contact</a>
+          <a ng-href="#!/locations" class="btn btn-primary">Locations</a>
+          <a ng-href="#!/shop" class="btn btn-primary">Shop</a>
       </div>
     </section>
   </div>
@@ -59,12 +79,5 @@
 		</div>
 	</div>
 </footer>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js" type="text/javascript"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfSBHoQp8zGKJJIpdJOZ4WSe1DnGXLxVo" async defer></script>
-
 </body>
 </html>

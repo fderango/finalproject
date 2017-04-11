@@ -4,10 +4,13 @@ var myStore = angular.module('coffeeStore', ['ngRoute']);
 
 myStore.controller('contactController', ['$scope', '$http', function ($scope, $http) {
     //$scope.map = { center: { latitude: -34.397, longitude: 150.644 }, zoom: 8 };
+    var chicago = {lat: 41.8933416, lng: -87.6351103};
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
-    });
+      center: chicago, zoom: 16 });
+    var marker = new google.maps.Marker({
+          position: chicago,
+          map: map
+        });
 }]);
 
 
