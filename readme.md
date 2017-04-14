@@ -16,6 +16,7 @@ pip install markdown
 pip install django-filter
 pip install pillow
 pip install django-allauth
+pip install braintree
 
 5. Run base migrations
 python manage.py migrate
