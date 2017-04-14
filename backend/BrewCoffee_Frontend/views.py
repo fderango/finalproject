@@ -1,23 +1,59 @@
+
 from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 #from django.core.urlsolvers import reverse
 from django.utils import timezone
 #import paypalrestsdk
-
+import braintree
 from django.conf import settings
 from django.contrib.auth.models import User
 
 from django.views import generic
 from django.utils import timezone
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from BrewCoffee_Core.models import IndexModel, Product, Cart, CartProduct
+import logging
+import json
 
+logger = logging.getLogger(__name__)
+
+
+braintree.Configuration.configure(braintree.Environment.Sandbox,
+                                  merchant_id="MERCHANT_ID",
+                                  public_key="PUBLIC_KEY",
+                                  private_key="PRIVATE_KEY")
 
 class IndexView(generic.ListView):
     model = IndexModel
     template_name = 'BrewCoffee_Frontend/index.html'
 
+def checkout(request):
+    return render(request, 'BrewCoffee_Frontend/checkout.html')
+
+@csrf_exempt
+def checkoutpost(request):
+    if request.method == 'POST':
+        nonce = request.POST.get('payment_method_nonce')
+        result = braintree.Transaction.sale({
+            "amount": "10.00",
+            "payment_method_nonce": nonce,
+            "options": {
+                "submit_for_settlement": True
+            }
+        })
+        return redirect('/receipt')
+    else:
+        return HttpResponse('500')
+
+def braintreetoken(request):
+    return JsonResponse(braintree.ClientToken.generate(), safe=False)
+
+def receipt(request):
+    return render(request, 'BrewCoffee_Frontend/receipt.html')
+
+    
 def add_to_cart(request, Products_id):
     if request.user.is_authenticated():
         try:

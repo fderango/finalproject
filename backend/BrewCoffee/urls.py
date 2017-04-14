@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
-from BrewCoffee_Frontend.views import add_to_cart, cart
+from BrewCoffee_Frontend.views import add_to_cart, cart, checkout, braintreetoken, checkoutpost, receipt
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,8 +26,11 @@ urlpatterns = [
     url(r'^api/', include ('BrewCoffee_Api.urls', namespace='api')),
     url(r'^add/(\d+)', add_to_cart, name='add_to_cart'),
     url(r'^$', include('BrewCoffee_Frontend.urls', namespace='frontend')),
-    url(r'^cart/', cart, name='cart')
-
+    url(r'^cart/', cart, name='cart'),
+    url(r'^checkout', checkout, name='checkout'),
+    url(r'^postcheckout', checkoutpost, name='checkoutpost'),
+    url(r'^braintreetoken/', braintreetoken, name='braintreetoken'),
+    url(r'^receipt/', receipt, name='receipt')
 
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
 
